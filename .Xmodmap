@@ -1,0 +1,67 @@
+! Key Mappings for my Manjaro KDE setup
+! Save to ~/.Xmodmap
+! To initialize without rebooting, run: xmodmap ~/.Xmodmap 
+
+! Set caps lock key to Mode_switch modifier
+clear lock
+clear mod5
+add lock = Mode_switch
+keycode 66 = Mode_switch Caps_Lock NoSymbol NoSymbol
+
+!Swap control and alt keys
+clear control
+clear mod1
+clear mod4
+keycode 37 = Alt_L Meta_L
+keycode 64 = Super_L
+keycode 133 = Control_L
+add control = Control_L Control_R
+add mod1 = Alt_L Meta_L
+add mod3 = Alt_R
+add mod4 = Super_L Super_R Super_L Hyper_L
+
+! Set caps lock + {i,j,k,l} to {Up, Down, Left, Right}
+keycode 31 = i I Up Up
+keycode 44 = j J Left Left
+keycode 45 = k K Down Down
+keycode 46 = l L Right Right
+
+keycode 24 = q Q Escape Escape q Q q Q
+
+keycode 28 = t T braceleft braceleft
+keycode 29 = y Y braceright braceright
+
+keycode 30 = u U BackSpace BackSpace
+
+keycode 32 = o O asterisk asterisk
+
+keycode 33 = p P plus plus
+
+keycode 40 = d D bracketleft bracketleft
+keycode 41 = f F bracketright bracketright
+
+keycode 42 = g G parenleft parenleft
+keycode 43 = h H parenright parenright
+
+! Swap colon and semicolon, add plus with caps locklock
+keycode 47 = colon semicolon equal equal
+
+keycode 48 = apostrophe quotedbl numbersign numbersign
+
+keycode 57 = n N Home Home
+keycode 58 = m M underscore underscore
+keycode 59 = comma less minus minus
+keycode 60 = period greater asciitilde asciitilde
+keycode 61 = slash question grave grave
+
+keycode  74 = XF86AudioPlay XF86AudioPlay F8 F8 F8 F8 XF86Switch_VT_8 F8 F8 XF86Switch_VT_8
+keycode  75 = F9 F9 F9 F9 F9 F9 XF86Switch_VT_9 F9 F9 XF86Switch_VT_9
+keycode  76 = F10 F10 F10 F10 F10 F10 XF86Switch_VT_10 F10 F10 XF86Switch_VT_10
+
+keycode  95 = XF86AudioLowerVolume XF86AudioLowerVolume F11 F11 F11 F11 XF86Switch_VT_11 F11 F11 XF86Switch_VT_11
+keycode  96 = XF86AudioRaiseVolume XF86AudioRaiseVolume F12 F12 F12 F12 XF86Switch_VT_12 F12 F12 XF86Switch_VT_12
+
+
+! Switch mouse scroll direction
+! pointer = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+pointer = 1 2 3 5 4 7 6 8 9 10 11 12 13 14 15 16 17 18 19 20

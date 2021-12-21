@@ -1,0 +1,458 @@
+; POLYBAR CONFIG FILE
+
+[colors]
+pale              = #f0f0f0
+orange            = #e0654d
+white             = #ffffff
+coral             = #bc5c6e
+charcoal          = #1d1d1d
+black             = #121212
+orange-red        = #e65245
+neon-green        = #00ff9c
+indigo-purple     = #6c6af2
+dark-blue         = #4648fb
+warning-red       = #df3b3d
+
+background        = ${self.charcoal}
+background-alt    = ${self.white}
+
+
+foreground        = ${self.white}
+foreground-alt    = ${self.black}
+
+[constants]
+padding = 1
+
+[bar/right]
+background-0          = ${colors.orange}
+background-1          = ${colors.coral}
+border-color          = ${colors.foreground}
+border-size           = 0
+border-transparent    = true
+bottom                = false
+cursor-click          = pointer
+cursor-scroll         = ns-resize
+fixed-center          = true
+foreground            = ${colors.foreground}
+height                = 38
+line-color            = #f00
+line-size             = 0
+module-margin-left    = 0
+module-margin-right   = 0
+monitor               = DisplayPort-2
+monitor-fallback      = DisplayPort-1
+offset-x              = 85%:-30
+offset-y              = 20
+override-redirect     = true
+padding-left          = 0
+padding-right         = 0
+radius                = 10.0
+scroll-down           = i3wm-wsprev
+scroll-up             = i3wm-wsnext
+tray-position         = none
+width                 = 15%
+enable-ipc            = true
+wm-restack            = i3
+modules-left          = pulseaudio spotify-prev spotify-play-pause spotify-next
+modules-center        = spotify
+modules-right         = date
+; Could add wlan (wifi) to center module. Could add powermenu to the right module.
+
+font-0 = mononoki Nerd Font Mono:style=Bold:fontformat=truetype:size=19:antialias=true;4
+font-1 = Roboto Condensed:style=Regular:size=16:antialias=true;4
+font-2 = Input Mono Narrow:style=Regular:size=16:antialias=true;4
+
+[bar/middle]
+inherit = bar/right
+
+offset-x              = 40%
+offset-y              = 20
+width                 = 20%
+background-0          = ${colors.charcoal}
+background-1          = ${colors.charcoal}
+modules-left          = 
+modules-center        = i3
+modules-right         = 
+wm-restack            = i3
+[bar/left]
+inherit = bar/right
+
+offset-x              = 0%:+30
+offset-y              = 20
+width                 = 10%
+
+modules-left          = 
+modules-center        = cpu memory filesystem
+modules-right         = 
+
+wm-restack            = i3
+
+;    _          _   _                
+;   | |__  __ _| |_| |_ ___ _ _ _  _ 
+;   | '_ \/ _` |  _|  _/ -_) '_| || |
+;   |_.__/\__,_|\__|\__\___|_|  \_, |
+;                               |__/ 
+
+[module/battery]
+adapter                                 = ADP1
+battery                                 = BAT1
+
+format-charging                         = <label-charging>
+format-charging-foreground              = ${colors.charcoal}
+
+format-discharging                      = <ramp-capacity><label-discharging>
+format-discharging-foreground           = ${colors.charcoal}
+
+format-full-foreground                  = ${colors.charcoal}
+
+
+
+full-at                                 = 99
+
+label-charging                          = 
+format-charging-padding                 = ${constants.padding}
+
+label-discharging                       = 
+format-discharging-padding              = ${constants.padding}
+
+label-full                              = 
+format-full-padding                     = ${constants.padding}
+
+poll-interval                           = 5
+
+type                                    = internal/battery
+
+ramp-capacity-0                         = 
+ramp-capacity-1                         = 
+ramp-capacity-2                         = 
+ramp-capacity-3                         = 
+ramp-capacity-4                         = 
+ramp-capacity-5                         = 
+ramp-capacity-6                         = 
+ramp-capacity-7                         = 
+ramp-capacity-8                         = 
+ramp-capacity-9                         = 
+
+;                 
+;    __ _ __ _  _ 
+;   / _| '_ \ || |
+;   \__| .__/\_,_|
+;      |_|        
+
+[module/cpu]
+
+type                    = internal/cpu
+format-foreground       = ${colors.charcoal}
+format-label            = <label>
+format-padding          = ${constants.padding}
+
+interval                = 2
+
+label                   =  %percentage%%
+label-font              = 2
+
+ramp-coreload-spacing   = 1
+ramp-coreload-0         = ▁
+ramp-coreload-1         = ▂
+ramp-coreload-2         = ▃
+ramp-coreload-3         = ▄
+ramp-coreload-4         = ▅
+ramp-coreload-5         = ▆
+ramp-coreload-6         = ▇
+ramp-coreload-7         = █
+
+;     _      _       
+;  __| |__ _| |_ ___ 
+; / _` / _` |  _/ -_)
+; \__,_\__,_|\__\___|
+                    
+[module/date]
+date                        = %D
+
+format                      = <label>
+
+
+interval                    = 1.0
+
+label-font = 2
+label                       = %{A6:time-admin:}  %time%   %{A}
+format-background           = ${colors.charcoal}
+format-foreground           = ${colors.white}
+
+;time                        = %a %m/%e    %I : %M  %p
+time                        = %I:%M%P
+time-alt                    = %A, %B %e  %I:%M:%S %p
+
+type                        = internal/date
+
+;   __ _ _                
+;  / _(_) |___ ____  _ ___
+; |  _| | / -_|_-< || (_-<
+; |_| |_|_\___/__/\_, /__/
+;                 |__/    
+
+[module/filesystem]
+
+type                        = internal/fs
+
+mount-0                     = /
+;mount-1                     = /data/home
+;mount-2                     = /data/backup
+
+fixed-values                = false
+
+format-mounted              = <label-mounted>
+format-unmounted            = <label-unmounted>
+
+
+
+interval                    = 10
+
+label-mounted               =  %free%
+;label-mounted-background    = ${colors.charcoal}
+;label-mounted-foreground    = ${colors.white}
+label-mounted-foreground    = ${colors.charcoal}
+label-mounted-font          = 2
+label-mounted-padding       = ${constants.padding}
+
+label-unmounted             = %mountpoint%: not mounted
+label-unmounted-background  = ${colors.charcoal}
+label-unmounted-foreground  = #55
+label-unmounted-padding     = ${constants.padding}
+
+
+; 
+
+;                   
+;    __ _ _ __ _  _ 
+;   / _` | '_ \ || |
+;   \__, | .__/\_,_|
+;   |___/|_|        
+
+
+;  _ ____             
+; (_)__ /_ __ ___ __  
+; | ||_ \ V  V / '  \ 
+; |_|___/\_/\_/|_|_|_|
+                     
+[module/i3]
+format                      = <label-state> <label-mode>
+index-sort                  = true
+pin-workspaces              = false
+type                        = internal/i3
+wrapping-scroll             = false
+
+;strip-wsnumbers            = true
+;1browser
+;2code
+;3code
+;4files
+;5media
+;6torrents
+;7design
+;8messaging
+;9
+;0
+ws-icon-0                   = 1;1
+ws-icon-1                   = 2;2
+ws-icon-2                   = 3;3
+ws-icon-3                   = 4;4
+ws-icon-4                   = 5;5
+ws-icon-5                   = 6;6
+ws-icon-6                   = 7;7
+ws-icon-7                   = 8;8
+ws-icon-8                   = 9;9
+ws-icon-9                   = 10;10
+
+label-focused-font = 1
+label-unfocused-font = 1
+label-urgent-font = 1
+label-mode-font = 1
+
+label-mode                  = 煉 %mode%
+label-mode-background       = ${colors.pale}
+label-mode-foreground       = ${colors.white}
+label-mode-padding          = 1
+
+label-focused               = %icon%
+label-focused-background    = ${colors.background}
+label-focused-foreground    = ${colors.neon-green}
+label-focused-padding       = 1
+
+label-unfocused             = %icon%
+label-unfocused-background  = ${colors.background}
+label-unfocused-foreground  = ${colors.pale}
+label-unfocused-padding     = 1
+
+label-urgent                = %icon%
+label-urgent-background     = ${colors.background}
+label-urgent-foreground     = ${colors.orange-red}
+label-urgent-padding        = 1
+
+label-visible               = %icon%
+label-visible-foreground    = ${colors.neon-green}
+label-visible-padding       = 1
+
+;              _         
+;    _ __ _  _| |___ ___ 
+;   | '_ \ || | (_-</ -_)
+;   | .__/\_,_|_/__/\___|
+;   |_|                  
+
+[module/pulseaudio]
+type                              = internal/pulseaudio
+
+label-muted-font                 = 1
+format-muted                      = <label-muted>
+format-muted-foreground           = ${colors.charcoal}
+format-muted-background-0         = ${colors.indigo-purple}
+format-muted-background-1         = ${colors.dark-blue}
+
+ramp-volume-0-font                = 2
+ramp-volume-1-font                = 2
+ramp-volume-2-font                = 2
+format-volume                     = <ramp-volume>
+format-volume-foreground          = ${colors.charcoal}
+format-volume-background-0        = ${colors.indigo-purple}
+format-volume-background-1        = ${colors.dark-blue}
+
+interval                          = 5
+
+label-muted                       = %{A3:pavucontrol:}婢%{A}
+format-muted-padding              = ${constants.padding}
+label-volume                      = %{A3:pavucontrol:}%{A}
+format-volume-padding             = ${constants.padding}
+
+; ramp-volume-0                     = %{A3:pavucontrol:}奄%{A}
+ramp-volume-0                     = %{A3:pavucontrol:}奔%{A}
+ramp-volume-1                     = %{A3:pavucontrol:}墳%{A}
+ramp-volume-2                     = %{A3:pavucontrol:}墳%{A}
+
+sink                              = alsa_output.pci-0000_0e_00.4.analog-stereo
+
+use-ui-max                        = false
+
+;                   
+;    _ _ __ _ _ __  
+;   | '_/ _` | '  \ 
+;   |_| \__,_|_|_|_|
+;                   
+
+[module/memory]
+type                = internal/memory
+interval            = 2
+
+format-foreground   = ${colors.black}
+format-label        = <label>
+format-padding      = ${constants.padding}
+
+label               =  %percentage_used%%
+label-font          = 2
+
+
+;    _                  
+;   | |_ ___ _ __  _ __ 
+;   |  _/ -_) '  \| '_ \
+;    \__\___|_|_|_| .__/
+;                 |_|   
+
+[module/temperature]
+type                    = internal/temperature
+format                  = <label>
+
+format-font             = 2
+format-warn-font        = 2
+format-foreground       = ${colors.white}
+format-warn             = <label-warn>
+format-padding          = ${constants.padding}
+format-warn-padding     = ${constants.padding}
+
+label                   =  %temperature-c%
+label-warn              =  %temperature-c%
+label-warn-foreground   = ${colors.warning-red}
+
+thermal-zone            = 4
+
+warn-temperature        = 60
+
+;           _           
+;   __ __ _| |__ _ _ _  
+;   \ V  V / / _` | ' \ 
+;    \_/\_/|_\__,_|_||_|
+;                       
+
+[module/eth]
+format-connected                      = %{A1:tilix -e wicd-curses:}直<label-connected>%{A}
+format-connected-foreground           = ${colors.charcoal}
+format-connected-background-0         = ${colors.indigo-purple}
+format-connected-background-1         = ${colors.dark-blue}
+
+format-disconnected                   = %{A1:tilix -e wicd-curses:}睊%{A}
+format-disconnected-foreground        = ${colors.charcoal}
+format-disconnected-background-0      = ${colors.indigo-purple}
+format-disconnected-background-1      = ${colors.dark-blue}
+
+interface                             = enp5s0
+
+interval                              = 3.0
+
+label-connected                       = 
+format-connected-padding              = ${constants.padding}
+format-disconnected-padding           = ${constants.padding}
+
+
+type                                  = internal/network
+
+[module/spotify]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+label-font = 2
+; format-prefix = "Now Playing: "
+format = <label>
+exec = /home/stevetimberman/.config/polybar/scripts/scroll_spotify_status.sh
+
+[module/spotify-prev]
+type = custom/script
+exec = echo " "
+label-font = 2
+label-foreground = ${colors.charcoal}
+format = <label>
+click-left = playerctl --player=spotify previous
+
+[module/spotify-play-pause]
+type = custom/ipc
+label-font = 2
+hook-foreground = ${colors.charcoal}
+hook-0 = echo "  "
+hook-1 = echo "  "
+initial = 1
+click-left = playerctl --player=spotify play-pause
+
+[module/spotify-next]
+type = custom/script
+exec = echo " "
+label-font = 2
+label-foreground = ${colors.charcoal}
+format = <label>
+click-left = playerctl --player=spotify next
+
+;          _   _   _              
+;  ___ ___| |_| |_(_)_ _  __ _ ___
+; (_-</ -_)  _|  _| | ' \/ _` (_-<
+; /__/\___|\__|\__|_|_||_\__, /__/
+;                        |___/    
+                                      
+[settings]
+;compositing-background = screen
+;compositing-background = xor
+;compositing-border     = over
+;pseudo-transparency    = true
+compositing-foreground  = source
+screenchange-reload     = true
+format-font             = 2
+
+[global/wm]
+; vim:ft=dosini
+  margin-bottom = 940
+  margin-top    = 940
