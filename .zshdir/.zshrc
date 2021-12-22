@@ -34,8 +34,6 @@ mcd() { mkdir -p "$1" && cd "$1"; }
 
 alias pact='poetry shell'
 
-ws() { cd ~/workspace/active;}
-
 alias wp="which python && python --version"
 alias act='source venv/bin/activate'
 alias deact='source deactivate'
@@ -49,6 +47,10 @@ alias gdiff="git diff --cached"
 
 alias cpuHogs='ps wwXaxr -o pid,stat,%cpu,time,command | head -10'
 alias find-file='find / -iname'
+
+
+code() { cd ~/code;}
+st-site() { cd ~/code/active/stevetimberman-site;}
 
 
 #### Linux Aliases

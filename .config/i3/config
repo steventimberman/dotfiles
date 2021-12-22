@@ -125,7 +125,7 @@ bindsym $modAlt+XF86AudioPlay exec --no-startup-id playerctl --player=spotify pl
 floating_modifier $modAlt
 
 # start a terminal
-bindsym $modAlt+Return exec termite
+bindsym $modAlt+Return exec alacritty
 
 # kill focused window
 bindsym $modAlt+Shift+q kill
