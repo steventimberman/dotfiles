@@ -314,9 +314,9 @@ hide_edge_borders none
 smart_borders on
 
 # # Set inner/outer gaps
-gaps inner 30
+gaps inner 15
 gaps outer 0
-gaps top 58
+gaps top 45
 gaps bottom 0
 
 set $mode_gaps Gaps: [ UP ] increase, or [ DOWN ] decrease

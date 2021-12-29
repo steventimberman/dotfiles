@@ -41,11 +41,11 @@ module-margin-left    = 0
 module-margin-right   = 0
 monitor               = DisplayPort-2
 monitor-fallback      = DisplayPort-1
-offset-x              = 85%:-30
-offset-y              = 20
+offset-x              = 85%:-15
+offset-y              = 10
 override-redirect     = true
-padding-left          = 0
-padding-right         = 0
+padding-left          = ${constants.padding}
+padding-right         = ${constants.padding}
 radius                = 10.0
 scroll-down           = i3wm-wsprev
 scroll-up             = i3wm-wsnext
@@ -53,9 +53,9 @@ tray-position         = none
 width                 = 15%
 enable-ipc            = true
 wm-restack            = i3
-modules-left          = pulseaudio spotify-prev spotify-play-pause spotify-next
+modules-left          = spotify-prev spotify-play-pause spotify-next
 modules-center        = spotify
-modules-right         = date
+modules-right         = pulseaudio
 ; Could add wlan (wifi) to center module. Could add powermenu to the right module.
 
 font-0 = mononoki Nerd Font Mono:style=Bold:fontformat=truetype:size=19:antialias=true;4
@@ -66,7 +66,7 @@ font-2 = Input Mono Narrow:style=Regular:size=16:antialias=true;4
 inherit = bar/right
 
 offset-x              = 40%
-offset-y              = 20
+offset-y              = 10
 width                 = 20%
 background-0          = ${colors.charcoal}
 background-1          = ${colors.charcoal}
@@ -74,16 +74,17 @@ modules-left          =
 modules-center        = i3
 modules-right         = 
 wm-restack            = i3
+
 [bar/left]
 inherit = bar/right
 
-offset-x              = 0%:+30
-offset-y              = 20
-width                 = 10%
+offset-x              = 0%:+15
+offset-y              = 10
+width                 = 15%
 
-modules-left          = 
-modules-center        = cpu memory filesystem
-modules-right         = 
+modules-left          = date
+modules-center        =
+modules-right         = cpu memory filesystem
 
 wm-restack            = i3
 
@@ -167,7 +168,11 @@ ramp-coreload-7         = █
 ; \__,_\__,_|\__\___|
                     
 [module/date]
-date                        = %D
+
+date = %a, %b %e
+
+;time                        = %a %m/%e    %I : %M  %p
+time                        = %I:%M%P
 
 format                      = <label>
 
@@ -175,13 +180,9 @@ format                      = <label>
 interval                    = 1.0
 
 label-font = 2
-label                       = %{A6:time-admin:}  %time%   %{A}
-format-background           = ${colors.charcoal}
-format-foreground           = ${colors.white}
-
-;time                        = %a %m/%e    %I : %M  %p
-time                        = %I:%M%P
-time-alt                    = %A, %B %e  %I:%M:%S %p
+label                       = %date% %{A6:time-admin:}- %time% %{A}
+;format-background           = ${colors.charcoal}
+format-foreground           = ${colors.charcoal}
 
 type                        = internal/date
 
@@ -302,7 +303,8 @@ label-visible-padding       = 1
 [module/pulseaudio]
 type                              = internal/pulseaudio
 
-label-muted-font                 = 1
+label-volume-font                 = 2
+label-muted-font                  = 2
 format-muted                      = <label-muted>
 format-muted-foreground           = ${colors.charcoal}
 format-muted-background-0         = ${colors.indigo-purple}
@@ -311,22 +313,23 @@ format-muted-background-1         = ${colors.dark-blue}
 ramp-volume-0-font                = 2
 ramp-volume-1-font                = 2
 ramp-volume-2-font                = 2
-format-volume                     = <ramp-volume>
+format-volume                     = <ramp-volume> <label-volume>
 format-volume-foreground          = ${colors.charcoal}
-format-volume-background-0        = ${colors.indigo-purple}
-format-volume-background-1        = ${colors.dark-blue}
+;format-volume-background          = ${colors.charcoal}
+; format-volume-background-1        = ${colors.dark-blue}
 
 interval                          = 5
 
-label-muted                       = %{A3:pavucontrol:}婢%{A}
+label-muted                       = %{A3:pavucontrol:}婢%{A} %percentage%%
 format-muted-padding              = ${constants.padding}
-label-volume                      = %{A3:pavucontrol:}%{A}
+label-volume                      = %percentage%%
 format-volume-padding             = ${constants.padding}
 
 ; ramp-volume-0                     = %{A3:pavucontrol:}奄%{A}
 ramp-volume-0                     = %{A3:pavucontrol:}奔%{A}
 ramp-volume-1                     = %{A3:pavucontrol:}墳%{A}
 ramp-volume-2                     = %{A3:pavucontrol:}墳%{A}
+format-ramp-foreground            = ${colors.white}
 
 sink                              = alsa_output.pci-0000_0e_00.4.analog-stereo
 
@@ -416,14 +419,17 @@ exec = /home/stevetimberman/.config/polybar/scripts/scroll_spotify_status.sh
 type = custom/script
 exec = echo " "
 label-font = 2
-label-foreground = ${colors.charcoal}
+format-foreground = ${colors.charcoal}
+;format-background = ${colors.charcoal}
 format = <label>
 click-left = playerctl --player=spotify previous
 
 [module/spotify-play-pause]
 type = custom/ipc
 label-font = 2
-hook-foreground = ${colors.charcoal}
+;hook-1-foreground = ${colors.white}
+format-foreground = ${colors.charcoal}
+;format-background = ${colors.charcoal}
 hook-0 = echo "  "
 hook-1 = echo "  "
 initial = 1
@@ -433,9 +439,11 @@ click-left = playerctl --player=spotify play-pause
 type = custom/script
 exec = echo " "
 label-font = 2
-label-foreground = ${colors.charcoal}
+format-foreground = ${colors.charcoal}
+;format-background = ${colors.charcoal}
 format = <label>
 click-left = playerctl --player=spotify next
+
 
 ;          _   _   _              
 ;  ___ ___| |_| |_(_)_ _  __ _ ___
