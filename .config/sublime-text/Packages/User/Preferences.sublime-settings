@@ -1,0 +1,70 @@
+{
+	"auto_complete": true,
+	"gtk_client_side_window_decorations": false,
+	"color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
+	"enable_telemetry": false,
+	"file_exclude_patterns":
+	[
+		".DS_Store",
+		"*.pid",
+		"*.pyc"
+	],
+	"folder_exclude_patterns":
+	[
+		"__pycache__",
+		"env",
+		"env3",
+		"CVS",
+		".hg",
+		".svn"
+	],
+	"ignored_packages":
+	[
+		"Python",
+		"Vintage",
+	],
+	"preview_on_click": false,
+	"shift_tab_unindent": true,
+	"theme": "ayu-mirage.sublime-theme",
+	"hardware_acceleration": "opengl",
+	"font_size": 10,
+	"ensure_newline_at_eof_on_save": true,
+	"open_files_in_new_window": "never",
+	"trim_trailing_white_space_on_save": true,
+	"highlight_find_results_in_scrollbar": false,
+	// ui_separator support for ayu theme
+	"ui_separator": true,
+	"inactive_sheet_dimming": true,
+	"show_tab_close_buttons_on_left": false,
+	"bold_folder_labels": true,
+	"hide_tab_scrolling_buttons": true,
+	"added_words":
+	[
+		"Backend",
+		"backend",
+		"Optum",
+		"Protobuf",
+		"microservice",
+		"cron",
+		"Minecraft",
+		"Nextcloud",
+		"Pypi",
+		"Benchmarking",
+	],
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html, text.xml",
+		},
+		{
+			"rhs_empty": true,
+			"selector": "punctuation.accessor",
+		},
+		{
+			"characters": "\\",
+			"selector": "text.tex.latex",
+		}
+	],
+	"auto_complete_commit_on_tab": true,
+}

@@ -1,4 +1,11 @@
-echo
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshdir/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# echo
 
 # Use powerline
 USE_POWERLINE="true"
@@ -28,7 +35,7 @@ alias ..2='cd ../../'
 alias ..3='cd ../../../'
 alias ..4='cd ../../../../'
 alias ~='cd ~'
-alias c='clear && echo'
+alias c='clear'
 alias dirsz='du -s -h *'
 mcd() { mkdir -p "$1" && cd "$1"; }
 
@@ -52,6 +59,7 @@ alias find-file='find / -iname'
 code() { cd ~/code;}
 st-site() { cd ~/code/active/stevetimberman-site;}
 
+alias dcomp='docker-compose'
 
 #### Linux Aliases
 
@@ -209,6 +217,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-neofetch
+# neofetch
 
 compinit
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

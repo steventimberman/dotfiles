@@ -10,13 +10,13 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # modAlt is the Alt keyboard key, but Super key in xmodmap
-set $modAlt Mod4
+set $modAlt Mod1
 
 # modX is the Super keyboard key, but Control key in xmodmap
-set $modX Control
+set $modX Mod4
 
 # modCtl is the Ctrl keyboard key, but Alt key in xmodmap
-set $modCtrl Mod1
+set $modCtrl Control
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -168,24 +168,24 @@ bindsym $modAlt+$modX+$modCtrl+Up move up
 bindsym $modAlt+$modX+$modCtrl+Right move right
 
 # split in horizontal orientation
-bindsym $modAlt+h split h
+bindsym $modAlt+$modX+h split h
 
 # split in vertical orientation
-bindsym $modAlt+v split v
+bindsym $modAlt+$modX+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $modAlt+f fullscreen toggle
+bindsym $modAlt+$modX+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $modAlt+s layout stacking
-bindsym $modAlt+w layout tabbed
-bindsym $modAlt+e layout toggle split
+bindsym $modAlt+$modX+s layout stacking
+bindsym $modAlt+$modX+w layout tabbed
+bindsym $modAlt+$modX+e layout toggle split
 
 # toggle tiling / floating
 bindsym $modAlt+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $modAlt+d focus mode_toggle
+bindsym $modAlt+$modX+d focus mode_toggle
 
 # focus the parent container
 bindsym $modAlt+a focus parent
