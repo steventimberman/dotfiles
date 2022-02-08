@@ -1,0 +1,12 @@
+// These settings override both User and Default settings for the Python syntax
+{
+	"auto_indent": true,
+	"rulers": [79],
+	"smart_indent": true,
+	"tab_size": 4,
+	"trim_automatic_white_space": true,
+	"use_tab_stops": true,
+	"trim_trailing_white_space_on_save": "not_on_carot",
+	"ensure_newline_at_eof_on_save": true,
+	"translate_tabs_to_spaces": true
+}

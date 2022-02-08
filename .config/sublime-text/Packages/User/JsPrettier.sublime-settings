@@ -1,0 +1,6 @@
+// Settings in here override those in "/JsPrettier/JsPrettier.sublime-settings",
+
+{
+	"prettier_cli_path": "/home/stevetimberman/.nvm/versions/node/v17.2.0/bin/prettier",
+	"node_path": "/home/stevetimberman/.nvm/versions/node/v17.2.0/bin/node"
+}
